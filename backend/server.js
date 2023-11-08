@@ -29,6 +29,14 @@ app.get('/',(req,res)=>{
     res.send('API is running')
 } )
 
+app.search(express.json());
+app.use(express.urlencoded({extended:false}));
+app.use(
+    cors({
+        origin:["http://localhost:3000","https://ecommerce-mern2.onrender.com"]
+    })
+);
+
 app.use('/api/products' ,productRoutes)
 app.use('/api/users' ,userRoutes)
 app.use('/api/orders' ,orderRoutes)
